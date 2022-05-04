@@ -1,8 +1,11 @@
 //here's where we make our page dinamic, here we will create buttons and inputs for teh user to interact with
-import React, {useContext, useState} from 'react'
+import React, {useContext, useRef, useState} from 'react'
 import { Store } from '../stateManagement/StoreProvider';
 
 const Form = () => {
+
+    const formRef = useRef(null)
+    //is this also a hook? it has been imported as well from react
 
 const onAdd = (event) =>{
     event.preventDefault();
@@ -15,6 +18,7 @@ const onAdd = (event) =>{
                 message
             }
         })
+        formRef.current.reset() //With these I clean the inputs after they've been used
     }
 }
 
@@ -41,7 +45,7 @@ const addingCategory = (e)=>{
 }
 
   return (
-    <form>
+    <form ref = {formRef}>
         <label>Category:</label>
         <input onChange={addingCategory}type="text" name="category"/>
         <label>Activity to do:</label>

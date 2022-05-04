@@ -4,7 +4,17 @@ import { Store } from '../stateManagement/StoreProvider'
 const ListOfToDo = () => {
 
   const {state, dispatch} = useContext(Store)
-  console.log(state);
+
+  const onCheckbox = (event, note) => {
+      const checked =event.currentTarget.checked;
+        dispatch({
+            type: 'update-note',
+            payload: {...note,
+            done: checked
+        }
+        })
+  }
+  
 
   return (
     <div>
@@ -15,11 +25,12 @@ const ListOfToDo = () => {
                 {note.category} <br />
                 {note.title} <br />
                 {note.message} <br />
+                <input onChange={(event) => onCheckbox(event, note)} type="checkbox" checked={note.done} />
                 </li>
             })}
         </ul>
     </div>
   )
 }
-
+//onChange executes an action 
 export default ListOfToDo 

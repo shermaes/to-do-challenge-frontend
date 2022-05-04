@@ -15,7 +15,11 @@ function reducer(state, action){
             return newStateAddNote
         case 'remove-note':
             return state
-        case 'update-note':        
+        case 'update-note':  
+        const newListOfNotes = state.listOfNotes.filter(note => note.id !== action.payload.id)
+            const newListOfNotesWithModification = [...newListOfNotes, action.payload]
+            const newStateModifiedCheckbox = {...state, listOfNotes: newListOfNotesWithModification}
+            return newStateModifiedCheckbox      
     }
 }
 

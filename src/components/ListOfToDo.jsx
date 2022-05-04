@@ -8,7 +8,7 @@ const ListOfToDo = () => {
 
   return (
     <div>
-        <h1>Actions pending to be done</h1>
+        <h1 style={{backgroundColor: "orange"}}>Actions pending to be done</h1>
         <ul>
         {state.listOfNotes.map(note => {
                 return <li style ={ note.done? {textDecoration: 'line-through', textDecorationColor:'orange'}: {}} key={note.id}> 

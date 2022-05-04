@@ -9,20 +9,23 @@ const initialState = {
         category: '',
         done: false
     },
-    listOfNotes: {
-        id:'0',
-        title: 'title by default',
-        message:'message by default',
-        category: 'category1',
-        done: true
-    },
+    listOfNotes: [
+        {
+            id: '0',
+            title: 'Title by default',
+            message: 'Message by default',
+            category: 'category1',
+            done: true    
+        }
+    ]
 }
 
 const Store = createContext(initialState)
+//I think this is another hook
 
 const StoreProvider = ({children}) => {
 
-const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState)
 //useReducer is a hook and you have to import it
 // dispatch is the trigger that we will be using to generate the state changes
 
@@ -33,3 +36,4 @@ const [state, dispatch] = useReducer(reducer, initialState)
 }
 
 export default StoreProvider
+export{Store, initialState}

@@ -1,12 +1,13 @@
 import { useState } from 'react'
+import StoreProvider from './stateManagement/StoreProvider'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <h1>My To-Do list</h1>
-    </div>
+    <StoreProvider>
+      <h1>My To-DoList</h1>
+    </StoreProvider>
   )
 }
 
